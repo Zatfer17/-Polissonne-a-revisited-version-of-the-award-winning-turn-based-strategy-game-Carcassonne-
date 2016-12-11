@@ -6,7 +6,7 @@ int createDeck(card_t *ptom) {
     int cas;
 
     FILE *fp;
-    fp=fopen ("mazzo.txt","r"); //popolamento array carte con lettura da file
+    fp=fopen ("deckTyp.txt","r"); //popolamento array carte con lettura da file
     if (fp) { return 1; }
 
     srand(time(NULL));

@@ -1,5 +1,5 @@
-#ifndef MAZZO_H
-#define MAZZO_H
+#ifndef PLAYER_H
+#define PLAYER_H
 
 #include "tipi.h"
 
