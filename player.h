@@ -6,7 +6,7 @@
 #define MAX_PLAY 8
 
 
-extern int playNum = 0; // How many players are in the game
+extern int playNum; // How many players are in the game
 
 
 /***********
@@ -17,19 +17,19 @@ extern int playNum = 0; // How many players are in the game
  * ptop = Pointer to player global array variable
  * return: 0 ok, !0 error
  */
-int createPlayer(player_t *ptop); // TODO: 1-Sceglere se farli tutti insieme o uno alla volta
+int createPlayer(player_t ptop[MAX_PLAY]); // TODO: 1-Sceglere se farli tutti insieme o uno alla volta
 
 /* Carica Giocatori da File
  * ptop = Pointer to player global array variable
  * return: 0 ok, !0 error
  */
-int loadPlayer(player_t *ptop, /*Filename?*/);
+int loadPlayer(player_t ptop[MAX_PLAY]);
 
 /* Salva Giocatori nel File
  * ptop = Pointer to player global array variable
  * return: 0 ok, !0 error
  */
-int savePlayer(player_t *ptop);
+int savePlayer(player_t ptop[MAX_PLAY]); //vedi mazzo.c
 
 /* Salva Giocatori nel File
  * card = Pointer to one card of the global array variable
