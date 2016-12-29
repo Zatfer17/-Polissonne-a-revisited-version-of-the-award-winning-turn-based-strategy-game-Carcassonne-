@@ -34,7 +34,7 @@ int loadCards(card_t *matrix[MAX_C][MAX_C], card_t *ptom);
  * x,y = coordinates
  * return: 0 ok, !0 error
  */
-int saveCard(card_t *ptoc, int x, int y); //vedi in mazzo.c quello che ho scritto
+int saveCard(card_t *ptoc, int x, int y);
 
 /* Salva un determinato numero di carte su file senza coordinate
  * ptom = Pointer to deck global array variable

@@ -17,7 +17,7 @@ extern int playNum; // How many players are in the game
  * ptop = Pointer to player global array variable
  * return: 0 ok, !0 error
  */
-int createPlayer(player_t ptop[MAX_PLAY]); // TODO: 1-Sceglere se farli tutti insieme o uno alla volta
+int createPlayer(player_t ptop[MAX_PLAY]);
 
 /* Carica Giocatori da File
  * ptop = Pointer to player global array variable

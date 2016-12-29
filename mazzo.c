@@ -1,12 +1,6 @@
 #include "mazzo.h"
 #include <time.h>
 
-/*IDEA: anzichè salvare lo stato della partita alla chiusura potremmo diversificare il menù
-in partita rapida e nuova partita: la prima opzione genera una partita senza salvataggi, la seconda
-salva in automatico ad ogni turno lo stato della partita così da non aver problemi nel definire
-un'opzione per il salvataggio della partita*/
-
-
 int next = 0;
 
 int createDeck(card_t ptom[MAX_C]) {
@@ -16,7 +10,7 @@ int createDeck(card_t ptom[MAX_C]) {
 
     FILE *fp;
     fp=fopen ("deckTyp.txt","r"); //popolamento array carte con lettura da file
-    if (fp==NULL) { return 1; }
+    if (fp==NULL) { return 101; }
     printf("prova");
 
     srand(time(NULL));
@@ -40,7 +34,7 @@ int createDeck(card_t ptom[MAX_C]) {
 int saveCard(card_t ptoc[MAX_C], int x, int y) {
     FILE *fp;
     fp=fopen ("save/mazzo.txt","w");
-    if (fp) { return 1; } //Return Error Code
+    if (fp) { return 101; } //Return Error Code
 
     fprintf(fp, "%c %c %c %c %d %d %d %d \n",
         ptoc->edges[0],
@@ -82,12 +76,13 @@ int loadCards(card_t *matrix[MAX_C][MAX_C], card_t ptom[MAX_C]) {
     int index,x,y,i;
     FILE *fp;
     fp=fopen ("save/mazzo.txt","r");
-    if (fp) { return 1; } //Return Error Code
+    if (fp) { return 101; } //Return Error Code
 
     //Extract the index number.
     fseek(fp, -1 * (long)sizeof(int), SEEK_END);
     fscanf(fp, "%d", index);
     rewind(fp);
+    if (index>72 && index<0) {return 102}
 
     //Prime (72-index) carte hanno anche le coordinate perciò creo due cicli differenziati
     for (i = 0; i < index; i++) {
