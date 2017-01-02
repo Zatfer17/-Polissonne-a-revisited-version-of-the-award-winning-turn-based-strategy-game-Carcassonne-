@@ -16,10 +16,18 @@ int createPlayer(player_t ptop[MAX_PLAY]) {
 	while (i<playNum) {
 		printf("Player %d inserisci il tuo nome: ", i+1);
 		scanf("%s",ptop[i].name);
-		ptop[i].symbol=2+i;
-		ptop[i].follower_left=8;
-		ptop[i].score=0;
+		ptop[i].symbol = 2+i;
+		ptop[i].follower_left = 8;
+		ptop[i].score = 0;
 		i++;
 	}
 	return 0;
+}
+
+
+void printGUI(player_t *curPlay) {
+    printf("\n\n\n\n\\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n") //Some self-made clear screen ;)
+    printf(" --------------------------------------------------------");
+    printf("| %s | %5d points | %1d followeras left |", curPlay->name, curPlay->score, curPlay->follower_left);
+    printf(" --------------------------------------------------------");
 }

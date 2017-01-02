@@ -17,23 +17,50 @@ follower_t follwers[MAX_PLAY*8];
 /**********
  * Method *
  **********/
-void printMenu() {};
-
-void printCredits();
-
+void printCredits() {
+    printf("Game realize by Fedeli Stefano & Matteo Ferrini ");
+    printf("Polissone 2016");
+};
+int printMenu() {
+    int choice;
+    printf ("\n\n1) Change Zoom\n2) Rotate Card\n3) Insert Card");
+    while (scanf ("%d", &choice) != 1 || choice > 3 || choice <= 0) {
+		fflush(stdin);
+		printf ("Valore non valido, riprova!\n");
+	};
+	return choice;
+};
 
 int main () {
-  int selection; //User choices
-  int i; // Counter for loops
+    int selection; //User choices
+    int i; // Counter for loops
 
-  printf ("Benvenuto in Polissone, scegli cosa fare:\n1) Nuova partita\n2) Carica partita\n3) Esci");
-  printf ("\nSelezione : ");
-  scanf ("%d", &selection);
-  switch (selection) {
-    case 1: printf("%d", createDeck(deck)); createPlayer(players); break;
-    case 2: //cose; break;
+
+    printf(" ______      _ _\n");
+    printf("(_____ \    | (_)   \n");
+    printf(" _____) )__ | |_  ___  ___  ___  ____   ____\n");
+    printf("|  ____/ _ \| | |/___)/___)/ _ \|  _ \ / _  )\n");
+    printf("| |   | |_| | | |___ |___ | |_| | | | ( (/ / \n");
+    printf("|_|    \___/|_|_(___/(___/ \___/|_| |_|\____)\n");
+    printf ("\n\n\nBenvenuto, scegli cosa fare:\n1) Nuova partita\n2) Carica partita\n3) Esci");
+    printf ("\nSelezione : ");
+    scanf ("%d", &selection);
+    switch (selection) {
+    case 1:
+        createDeck(deck);
+        createPlayer(players);
+    break;
+    case 2:
+        loadCards(matrix, deck);
+        loadPlayer(players);
+        //loadFollower();
+    break;
     case 3: return 0;
     default: printf ("Non consentito!"); return 0;
+
+    while (next<MAX_C) {
+
+    }
 
   }
 
