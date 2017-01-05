@@ -1,5 +1,7 @@
 #ifndef TIPI_H
 #define TIPI_H
+
+#define MAX_C 72
 #define N 4
 
 /* -- ELEMENT TYPE --*/

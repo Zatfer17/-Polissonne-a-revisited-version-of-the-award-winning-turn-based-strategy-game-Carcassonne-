@@ -5,7 +5,6 @@
 #include <stdio.h>
 #include "tipi.h"
 
-#define MAX_C 72
 #define TYP_C 19
 
 

@@ -29,18 +29,22 @@ int loadPlayer(player_t ptop[MAX_PLAY]);
  * ptop = Pointer to player global array variable
  * return: 0 ok, !0 error
  */
-int savePlayer(player_t ptop[MAX_PLAY]); //vedi mazzo.c
+int savePlayer(player_t ptop[MAX_PLAY]);
 
-/* Salva Giocatori nel File
- * card = Pointer to one card of the global array variable
- * matrix = Pointer to the game's field
+/* Routa Carta
+ * vett = Pointer to the card's array
+ * index = Actual position of the future first element
+ * dim = Dimension of the array
  * return: 0 ok, !0 error
  */
-int setCard(card_t *card, int *matrix);
-    /* Hidden Method:
-     * - Shift(int *array)  Metodo per ruotare l'array e quindi la tessera
-     * - CheckFit(int x, int y, int elemType, card_t *nearCard) Metodo per verificare che le tessere combacino
-     */
+int shift(int vett[N], int index, int dim);
+
+/* Verifica che le tessere combacino
+ * element = Pointer to the array of the card's element
+ * matrix = Pointer to the matrix
+ * return: true ok, false error
+ */
+bool setCard(int element[N], card_t *matrix[MAX_C][MAX_C]);
 
 /* Stampa interfaccia per gestire tessere e seguaci
  * curPlay = Pointer to current Player struct

@@ -24,7 +24,7 @@ void printCredits() {
 int printMenu() {
     int choice;
     printf ("\n\n1) Change Zoom\n2) Rotate Card\n3) Insert Card");
-    while (scanf ("%d", &choice) != 1 || choice > 3 || choice <= 0) {
+    while (scanf ("%d", &choice) != 1 || choice > 3 || choice < 1) {
 		fflush(stdin);
 		printf ("Valore non valido, riprova!\n");
 	};
@@ -33,7 +33,12 @@ int printMenu() {
 
 int main () {
     int selection; //User choices
-    int i; // Counter for loops
+    int i,j; // Counter for loops
+
+    //MATRIX INITIALIZATION
+    for(i = 0; i<MAX_C; i++)
+        for(j = 0; j<MAX_C; j++)
+            matrix[i][j]= 0;
 
 
     printf(" ______      _ _\n");
@@ -57,19 +62,48 @@ int main () {
     break;
     case 3: return 0;
     default: printf ("Non consentito!"); return 0;
+    }
 
     while (next<MAX_C) {
+        //uselfull var
+        //Probabilmente in c non è possibile dichiararle qui
+        bool cardSet = false;
+
+        //Graphics & Menu
+        while (!cardSet) {
+            printGUI(players[next % playNum]);
+            printMatrixZoom();
+            //printCard() Stampa singola carta pescata
+            switch (printMenu()) {
+            case 1: continue; //Cambia Zoom sulla matrice
+            case 2: shift(deck[next].edges,1,4); break;
+            case 3: cardSet = setCard(deck[next].edges, matrix);
+            }
+        }
+        /**
+        Follower instruction
+        .......
+        ......
+        .....
+        ....
+        ...
+        ..
+        .
+        */
+
+        next++; //pick the next card
+
+        //Saving the game without asking
+        for(i = 0; i<MAX_C; i++)
+            for(j = 0; j<MAX_C; j++)
+                if (matrix[i][j]==0)
+                    saveCard(matrix[i][j],j,i);
+        saveDeck(deck,next);
+        //savePlayer();
+        //saveFollower();
+        //Maybe we should be merge this two methods commented
 
     }
 
   }
-
-  /*for (i=0;i<MAX_C;i++) {
-  	printf ("%d  ", deck[i].wifi);
-  }
-  printf("\n");
-  for (i=0;i<playNum;i++) {
-  	printf ("%c ", players[i].symbol);
-  }
-  return 0;*/
 }

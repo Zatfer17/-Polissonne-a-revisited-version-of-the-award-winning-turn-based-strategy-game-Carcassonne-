@@ -31,7 +31,7 @@ int createDeck(card_t ptom[MAX_C]) {
     return 0;
 }
 
-int saveCard(card_t ptoc[MAX_C], int x, int y) {
+int saveCard(card_t* ptoc, int x, int y) {
     FILE *fp;
     fp=fopen ("save/mazzo.txt","w");
     if (fp) { return 101; } //Return Error Code
