@@ -10,8 +10,8 @@
 
 card_t deck[MAX_C];
 card_t *matrix[MAX_C][MAX_C];
-player_t players[MAX_PLAY]; //forse meglio non definire MAX_PLAY come costante ma usare il valore acquisito da terminale
-follower_t follwers[MAX_PLAY*8]; //in modo da ottimizzare il dispendio di memoria (seppur minimo)
+player_t players[MAX_PLAY]; 
+follower_t followers[MAX_PLAY*8]; 
 
 
 /**********
