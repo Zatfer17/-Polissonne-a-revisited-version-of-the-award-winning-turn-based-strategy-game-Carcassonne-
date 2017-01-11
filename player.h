@@ -44,7 +44,7 @@ int shift(int vett[N], int index, int dim);
  * matrix = Pointer to the matrix
  * return: true ok, false error
  */
-bool setCard(int element[N], card_t *matrix[MAX_C][MAX_C]);
+boolean setCard(int element[N], card_t *matrix[MAX_C][MAX_C]);
 
 /* Stampa interfaccia per gestire tessere e seguaci
  * curPlay = Pointer to current Player struct

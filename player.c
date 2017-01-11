@@ -14,7 +14,7 @@ int createPlayer(player_t ptop[MAX_PLAY]) {
 	};
 
 	while (i<playNum) {
-		printf("Player %d inserisci il tuo nome: ", i+1);
+		printf("\033[0;31mPlayer %d\033[0m inserisci il tuo nome: ", i+1);
 		scanf("%s",ptop[i].name);
 		ptop[i].symbol = 2+i;
 		ptop[i].follower_left = 8;
@@ -40,34 +40,28 @@ int shift(int vett[N], int index, int dim) {
     rverseArray(vett,0,dim-1);
 }
 
-bool checkFit(card_t* newCard, card_t* check, int elem){
-    return (newCard->edges[elem] == check->edges[(elem+2)%5]) ? true : false;
+boolean checkFit(int elem, card_t *check, int vicino){
+	//If per puntatore = 0
+    return (elem == check->edges[(vicino+2)%5]) ? TRUE : FALSE;
 }
-bool setCard(int element[N], card_t *matrix[MAX_C][MAX_C]) {
+boolean setCard(int element[N], card_t *matrix[MAX_C][MAX_C]) {
     int i, x,y;
 
-    printf ("\nInserisci le coodinate dove verrà posizionata la carta\n);
+    printf ("\nInserisci le coodinate dove verra'� posizionata la carta\n");
     printf ("Rispetta il formato (x,y)\n");
     printf ("Per tornare al menu precedente inserisci -1,-1\n");
     printf ("La tua scelta: ");
-    while (scanf ("%d,%d",&x,&y) != 1 || (x<-1 && y<-1) || (x>72 && y>72)) {
+    while (scanf ("%d,%d",&x,&y) != 2 || (x<-1 || y<-1) || (x>72 || y>72)) {
 		fflush(stdin);
 		printf ("Valore non valido, riprova!\n");
 	};
-    if (x==-1 || y==-1) { return false; }
+    if (x==-1 || y==-1) { return FALSE; }
 
     //Looping this is better but I don't know how to do it
     if( checkFit(element[0],matrix[x+0][y-1],0) && //Check if TOP fit
         checkFit(element[1],matrix[x+1][y+0],1) && //Check if RIGHT fit
         checkFit(element[2],matrix[x+0][y+1],2) && //Check if DOWN fit
         checkFit(element[3],matrix[x-1][y+0],3)    //Check if LEFT fit
-    )    { return true; }
-    else { return false; }
-}
-
-void printGUI(player_t *curPlay) {
-    printf("\n\n\n\n\\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n") //Some self-made clear screen ;)
-    printf(" --------------------------------------------------------");
-    printf("| %s | %5d points | %1d followeras left |", curPlay->name, curPlay->score, curPlay->follower_left);
-    printf(" --------------------------------------------------------");
+    )    { return TRUE; }
+    else { return FALSE; }
 }

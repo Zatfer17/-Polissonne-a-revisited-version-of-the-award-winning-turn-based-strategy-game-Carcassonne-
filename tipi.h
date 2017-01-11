@@ -9,7 +9,7 @@
 #define park 1
 #define building 2
 
-typedef enum {FALSE,TRUE} campus_t, wifi_t;
+typedef enum {FALSE,TRUE} campus_t, wifi_t, boolean;
 
 typedef struct {
 	int edges[N];

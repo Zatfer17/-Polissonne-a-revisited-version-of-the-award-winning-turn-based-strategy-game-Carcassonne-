@@ -1,9 +1,12 @@
-/* Come mai abbiamo una gui.h? */
+#include <stdio.h>
+#include "tipi.h"
 
-#include "player.h"//includo per "dimensione" stampa... Non ho capito :|
+/* Come mai abbiamo una gui.h?
+
+#include "player.h"//includo per "dimensione" stampa... Non ho capito :| */
 
 
-// Cool stuff here for testing
+// Cool stuff here for texts
 #define red   "\033[0;31m"        /* 0 -> normal ;  31 -> red */
 #define cyan  "\033[1;36m"        /* 1 -> bold ;  36 -> cyan */
 #define green "\033[4;32m"        /* 4 -> underline ;  32 -> green */
@@ -16,14 +19,29 @@
 
 #define none   "\033[0m"        /* to flush the previous property */
 
+/***********
+ * METHODS *
+ ***********/
+ /* Prints a zoomed view of the scenario
+  * matrix = pointer to game-grid
+  * ptom = pointer to deck
+  */
+void printMatrixZoom(card_t *matrix, card_t *ptom);
 
-/* Menu
-*  1- Change Zoom
-*  2- Rotate Card
-*  3- Insert Card
-*/
-void printMenu();
+/* Prints game options for player
+ * 3 kind of actions allowed:
+ *  1- Change Zoom
+ *  2- Rotate Card
+ *  3- Insert Card
+ */
+int printMenu();
 
-void printMatrixZoom();
+/* Prints graphical interface which displays:
+ *  1- Name
+ *  2- Points
+ *  3- Followers left
+ */
+void printGUI(player_t *curPlay);
 
-void printCredits(); //Metodo sviluppato nel main, nel caso da spostare qui
+/* Prints development credits */
+void printCredits();
